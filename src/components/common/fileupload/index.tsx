@@ -1,7 +1,7 @@
-import React from "react";
-import { Grid, GridItem, Button } from "@patternfly/react-core";
-import { LocalFile } from "../../feed/CreateFeed/types";
-import { LocalFileList } from "../../feed/CreateFeed/helperComponents";
+import React from 'react';
+import { Grid, GridItem, Button } from '@patternfly/react-core';
+import { LocalFile } from '../../feed/CreateFeed/types';
+import { LocalFileList } from '../../feed/CreateFeed/helperComponents';
 
 type FileUploadProps = {
   localFiles: LocalFile[];
@@ -19,8 +19,8 @@ const FileUpload = ({
   className,
 }: FileUploadProps) => {
   const openLocalFilesPicker = (): Promise<LocalFile[]> => {
-    const input = document.createElement("input");
-    input.type = "file";
+    const input = document.createElement('input');
+    input.type = 'file';
     input.multiple = true;
     input.click();
     return new Promise((res) => {
@@ -60,10 +60,16 @@ const FileUpload = ({
   return (
     <div className={className}>
       <Grid hasGutter={true}>
-        <GridItem span={4} rowSpan={4}>
+        <GridItem
+          span={4}
+          rowSpan={4}
+          style={{
+            minWidth: '9rem',
+          }}
+        >
           <Button
             style={{
-              width: "100%",
+              width: '100%',
             }}
             onClick={() => handleChoseFilesClick()}
           >
@@ -71,8 +77,17 @@ const FileUpload = ({
           </Button>
           {uploadName && uploadName}
         </GridItem>
-        <GridItem className={`${className}-grid`} span={8} rowSpan={12}>
-          <div className="file-list">{fileList}</div>
+        <GridItem
+          className={`${className}-grid`}
+          span={8}
+          rowSpan={12}
+          style={{
+            marginLeft: '1rem',
+          }}
+        >
+          <div className='file-list'>
+            {fileList}
+          </div>
         </GridItem>
       </Grid>
     </div>
