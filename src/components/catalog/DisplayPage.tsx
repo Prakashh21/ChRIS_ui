@@ -147,7 +147,7 @@ const DisplayPage = ({
     readFile(file);
   };
 
-  const drawerContent = (
+  const drawerContent = (     // class pf drawer panel
     <Grid hasGutter={true}>
       <div
         style={{
@@ -192,15 +192,6 @@ const DisplayPage = ({
               />
             </div>
           )}
-</div>
-<div
-          style={{
-            // display: "flex",
-            // gap:"1rem",
-            border:"2px black solid",
-            position:"relative",
-          }}
-        >
 
           <TextInput // search bar
             value={search}
@@ -238,7 +229,7 @@ const DisplayPage = ({
         resources.map((resource) => {
           return (
             <GridItem sm={6} md={4} lg={4} key={resource.data.id}>
-              <Card style={{border:"1px black solid"}}
+              <Card 
                 isSelectable
                 isSelected={
                   selectedResource &&
@@ -257,7 +248,7 @@ const DisplayPage = ({
                 className="pluginList"
                 key={resource.data.id}
               >
-                <CardHeader>
+                <CardHeader >
                   <CardHeaderMain></CardHeaderMain>
                 </CardHeader>
                 <CardTitle>
@@ -298,7 +289,7 @@ const DisplayPage = ({
   };
 
   const panelContent = (
-    <DrawerPanelContent style={{border:"2px blue solid",}}>
+    <DrawerPanelContent style={{border:"1px black solid",height:"100%",}}>
       <DrawerHead>
         <DrawerActions>
           <DrawerCloseButton
@@ -394,7 +385,7 @@ const DisplayPage = ({
       <div ref={scrollRef}>
         <Drawer isExpanded={isExpanded}>
           <DrawerContent  panelContent={panelContent}>
-            <DrawerContentBody>{drawerContent}</DrawerContentBody>
+            <DrawerContentBody style={{alignItems:"flex-end",}}>{drawerContent}</DrawerContentBody>
           </DrawerContent>
         </Drawer>
       </div>
