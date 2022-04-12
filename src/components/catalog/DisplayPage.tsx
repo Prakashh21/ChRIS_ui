@@ -100,7 +100,7 @@ const DisplayPage = ({
     marginTop: "0.25em",
   };
 
-  const showOpenFile = () => {
+  const showOpenFile = () => { // to open file browse when click on the div
     if (fileOpen.current) {
       fileOpen.current.click();
     }
@@ -155,6 +155,8 @@ const DisplayPage = ({
           justifyContent: "space-between",
           alignItems: "center",
           padding: "0.8rem 1rem",
+          border:"2px yellow solid",
+          
 
         }}
       >
@@ -170,6 +172,8 @@ const DisplayPage = ({
           style={{
             display: "flex",
             gap:"1rem",
+            border:"2px black solid",
+            position:"relative",
           }}
         >
           {showPipelineButton && (
@@ -188,7 +192,17 @@ const DisplayPage = ({
               />
             </div>
           )}
-          <TextInput
+</div>
+<div
+          style={{
+            // display: "flex",
+            // gap:"1rem",
+            border:"2px black solid",
+            position:"relative",
+          }}
+        >
+
+          <TextInput // search bar
             value={search}
             type="text"
             placeholder="Search"
@@ -219,12 +233,12 @@ const DisplayPage = ({
         />
       )}
 
-      {resources &&
+      {resources && 
         resources.length > 0 &&
         resources.map((resource) => {
           return (
             <GridItem sm={6} md={4} lg={4} key={resource.data.id}>
-              <Card
+              <Card style={{border:"1px black solid"}}
                 isSelectable
                 isSelected={
                   selectedResource &&
@@ -237,7 +251,7 @@ const DisplayPage = ({
                 onKeyDown={(event: any) => {
                   if ([13, 32].includes(event.keyCode)) {
                     setSelectedResource(resource);
-                    setIsExpanded(true);
+                    setIsExpanded(true);  // works with keyboard 
                   }
                 }}
                 className="pluginList"
@@ -284,7 +298,7 @@ const DisplayPage = ({
   };
 
   const panelContent = (
-    <DrawerPanelContent>
+    <DrawerPanelContent style={{border:"2px blue solid",}}>
       <DrawerHead>
         <DrawerActions>
           <DrawerCloseButton
@@ -355,8 +369,8 @@ const DisplayPage = ({
 
             <Divider
               style={{
-                paddingTop: "2em",
-              }}
+                paddingTop: "2em",  // divider line
+              }} 
             />
             <p>{selectedResource.data.description}</p>
             {showPipelineButton && (
@@ -379,12 +393,12 @@ const DisplayPage = ({
       />
       <div ref={scrollRef}>
         <Drawer isExpanded={isExpanded}>
-          <DrawerContent panelContent={panelContent}>
+          <DrawerContent  panelContent={panelContent}>
             <DrawerContentBody>{drawerContent}</DrawerContentBody>
           </DrawerContent>
         </Drawer>
       </div>
-    </>
+    </> // div inside div inside div
   );
 };
 

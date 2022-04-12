@@ -55,6 +55,7 @@ const Header: React.FC<IHeaderProps> = ({
 
   return (
     <PageHeader
+      // style={{border:"4px solid blue"}}
       className="header"
       aria-label="Page Header"
       logo={brand}

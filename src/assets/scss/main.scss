@@ -12,3 +12,39 @@
 
 // Custom Layout styles
 @import './layout/layout';
+
+$breakpoint-tablet: 768px;
+
+
+html, body {
+    @media (max-width: $breakpoint-tablet) {
+    
+    max-width: 100%;
+    overflow-x: hidden;
+
+    }
+}
+
+// .pf-c-page__header{
+//     text-overflow: ellipsis;
+//     border: 4px yellow solid;
+//     padding: 0px;
+
+//     @media (max-width: $breakpoint-tablet) {
+//         color: blue;  
+// }
+// }
+
+
+
+
+
+
+.pf-c-brand img{
+    @media (max-width: $breakpoint-tablet) {
+               margin-left: 5px;
+               border: 1px yellow solid; 
+    }
+}
+
+
