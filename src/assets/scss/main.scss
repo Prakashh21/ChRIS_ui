@@ -13,11 +13,11 @@
 // Custom Layout styles
 @import './layout/layout';
 
-$breakpoint-tablet: 768px;
+$breakpoint-mobile: 500px;
 
 
 html, body {
-    @media (max-width: $breakpoint-tablet) {
+    @media (max-width: $breakpoint-mobile) {
     
     max-width: 100%;
     overflow-x: hidden;
