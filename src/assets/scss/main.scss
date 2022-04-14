@@ -12,3 +12,28 @@
 
 // Custom Layout styles
 @import './layout/layout';
+
+$breakpoint-tablet: 768px;
+
+html, body {
+    @media (max-width: $breakpoint-tablet) {
+    max-width: 100%;
+    overflow-x: hidden;
+    }
+}
+
+@media only screen and (max-width: 500px){
+    .pf-c-page__header-brand{
+        padding-left:0px;
+        padding: 0.3rem;
+    }
+
+    .pf-c-page__header-brand-toggle{
+    margin: 0 !important;
+    }
+
+    .pf-c-button.pf-m-plain{
+        margin: 0;
+        padding: 0;
+    }
+}
