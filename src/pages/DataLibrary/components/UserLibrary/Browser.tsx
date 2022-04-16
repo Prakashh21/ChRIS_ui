@@ -26,6 +26,7 @@ import { Paginated } from "./context";
 import FileViewerModel from "../../../../api/models/file-viewer.model";
 import ChrisAPIClient from "../../../../api/chrisapiclient";
 import { Spin } from "antd";
+import { useHistory } from "react-router";
 
 interface BrowserInterface {
   initialPath: string;
@@ -133,12 +134,14 @@ export function Browser({
 }
 
 function FileCard({ file, previewAll }: { file: any; previewAll: boolean }) {
+
   const fileNameArray = file.data.fname.split("/");
   const fileName = fileNameArray[fileNameArray.length - 1];
   const [largePreview, setLargePreview] = React.useState(false);
 
   return (
     <>
+     
       <Card key={file.data.fname} isRounded isHoverable isSelectable>
         <CardBody>
           {previewAll && (
@@ -219,6 +222,7 @@ function FolderCard({
   handleDownload,
   username,
 }: FolderCardInterface) {
+    const history = useHistory();
   const [dropdown, setDropdown] = useState(false);
   const [feedName, setFeedName] = useState("");
   const toggle = (
@@ -296,10 +300,23 @@ function FolderCard({
             <Button
               style={{ padding: 0 }}
               variant="link"
-              onClick={() => {
-                handleFolderClick(`${initialPath}/${folder}`);
+
+
+                onMouseDown={(event) => {
+                  console.log(event.button)
+                  if (event.button === 0) {
+                     handleFolderClick(`${initialPath}/${folder}`);
+                     history.push(`/library?userName_uploadType=${initialPath}&folderName=${folder}`);
+                } else if (event.button === 1) {
+                  window.open(
+                    `/library?userName_uploadType=${initialPath}&folderName=${folder}`
+                  );
+                }
               }}
+
+              
             >
+
               <b>
                 {browserType === "feed" && initialPath === username ? (
                   !feedName ? (
