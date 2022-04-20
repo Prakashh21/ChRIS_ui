@@ -88,6 +88,14 @@ const BrowserContainer = ({
     fetchUploads();
   }, [dispatch, rootPath, type]);
 
+  React.useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+      const path_1 = params.get('userName_uploadType');
+      const path_2 = params.get('folderName');
+        handleFolderClick(`${path_1}/${path_2}`,undefined);
+    },[])
+    
+
   const handleFolderClick = async (path: string, breadcrumb?: any) => {
     const client = ChrisAPIClient.getClient();
     const pagination = breadcrumb

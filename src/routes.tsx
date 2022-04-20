@@ -69,6 +69,7 @@ export const MainRouter: React.FC = () => {
       <PrivateRoute path="/brainbrowser" component={BrainBrowser} />
       <PrivateRoute path="/collab" component={Collab} />
       <PrivateRoute path="/pacs" component={PACSLookup} />
+      <PrivateRoute path='/library:folderName' component={Library}/>
       <Route component={NotFound} />
     </RouterProvider>
   );

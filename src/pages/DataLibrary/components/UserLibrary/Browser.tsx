@@ -26,6 +26,8 @@ import { Paginated } from "./context";
 import FileViewerModel from "../../../../api/models/file-viewer.model";
 import ChrisAPIClient from "../../../../api/chrisapiclient";
 import { Spin } from "antd";
+import { useHistory } from "react-router";
+
 
 interface BrowserInterface {
   initialPath: string;
@@ -227,6 +229,7 @@ function FolderCard({
       style={{ padding: "0" }}
     />
   );
+  const history = useHistory();
 
   React.useEffect(() => {
     async function fetchFeedName() {
@@ -296,9 +299,18 @@ function FolderCard({
             <Button
               style={{ padding: 0 }}
               variant="link"
-              onClick={() => {
-                handleFolderClick(`${initialPath}/${folder}`);
-              }}
+              onMouseDown={(event) => {
+                console.log(event.button)
+                if (event.button === 0) {
+                   handleFolderClick(`${initialPath}/${folder}`);
+                   history.push(`/library?userName_uploadType=${initialPath}&folderName=${folder}`);
+              } else if (event.button === 1) {
+                window.open(
+                  `/library?userName_uploadType=${initialPath}&folderName=${folder}`
+                );
+              }
+            }}
+            
             >
               <b>
                 {browserType === "feed" && initialPath === username ? (
